@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OnFoni - AI-driven consultancy marketplace connecting professionals with users for instant expert advice through chat and voice consultations.">
+    <title>OnFoni - AI-Driven Consultancy Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            --primary-start: #1877F2;
+            --primary-end: #0D47A1;
+            --text-light: #ffffff;
+            --text-dark: #121212;
+            --background-light: #ffffff;
+            --background-alt: #f8f9fa;
+            --border-light: #e0e0e0;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* ========== Base & Reset ========== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* ========== Header & Navigation ========== */
+        #main-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .logo img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-start);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-start);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ========== Hero Section ========== */
+        #hero {
+            display: flex;
+            align-items: center;
+            min-height: 90vh;
+            background-image: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+            color: var(--text-light);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before, #hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: 0;
+            animation: pulse 10s infinite alternate;
+        }
+
+        #hero::before {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            top: -20%;
+            left: -10%;
+        }
+
+        #hero::after {
+            width: 400px;
+            height: 400px;
+            background-color: var(--primary-start);
+            bottom: -25%;
+            right: -15%;
+            animation-direction: alternate-reverse;
+        }
+
+        .hero-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1 1 55%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            max-width: 500px;
+            margin: 0 0 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .cta-group-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            opacity: 0.8;
+            padding-left: 0.5rem;
+        }
+
+        .button-pair {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .btn-primary {
+            background-color: var(--text-light);
+            color: var(--primary-end);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--text-light);
+            border-color: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border-color: var(--text-light);
+        }
+
+        .btn-secondary:hover:not(.btn-disabled) {
+            background-color: var(--text-light);
+            color: var(--primary-end);
+            transform: translateY(-3px);
+        }
+
+        .btn-disabled {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.6);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .hero-image {
+            flex: 1 1 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-mockup {
+            width: 300px;
+            height: 600px;
+            background-color: #1a1a1a;
+            border-radius: 40px;
+            border: 10px solid #000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            padding: 20px;
+            transform: rotate(5deg);
+        }
+
+        .mobile-mockup .screen {
+            background-color: #f0f2f5;
+            height: 100%;
+            border-radius: 30px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 10px;
+            overflow: hidden;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .mobile-mockup .chat-bubble {
+            padding: 10px 15px;
+            border-radius: 20px;
+            max-width: 80%;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+
+        .mobile-mockup .chat-bubble.user {
+            background-color: #dcf8c6;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .mobile-mockup .chat-bubble.consultant {
+            background-color: #fff;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        /* ========== General Section Styling ========== */
+        .section {
+            padding: 5rem 0;
+        }
+
+        #features, #how-it-works, #contact {
+            background-color: var(--background-alt);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: #555;
+        }
+
+        /* ========== Features Section ========== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--background-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-end);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .feature-list svg {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: var(--primary-start);
+            margin-top: 2px;
+        }
+
+        .coming-soon {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #888;
+            margin-left: 0.5rem;
+        }
+
+        /* ========== How It Works Section ========== */
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .step-card {
+            position: relative;
+            padding: 2rem;
+            padding-top: 3.5rem;
+        }
+
+        .step-icon {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-image: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card p {
+            color: #555;
+        }
+
+        /* ========== CTA Section (Join) ========== */
+        .cta-section {
+            background-image: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+            color: var(--text-light);
+        }
+
+        .cta-section .section-title {
+            color: var(--text-light);
+        }
+
+        .cta-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .waitlist-form input[type="email"] {
+            width: 100%;
+            max-width: 350px;
+            padding: 0.85rem 1.2rem;
+            border: 2px solid var(--text-light);
+            border-radius: 50px;
+            background-color: transparent;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: var(--font-family);
+        }
+
+        .waitlist-form input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .waitlist-form input[type="email"]:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .waitlist-form .btn-primary {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        /* ========== Testimonials Section ========== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--background-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            color: var(--primary-start);
+            opacity: 0.15;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            color: var(--primary-end);
+            text-align: right;
+        }
+
+        /* ========== Join Consultant Section ========== */
+        #join-consultant .section-title {
+            color: var(--primary-end);
+        }
+
+        .join-btn {
+            background-color: var(--primary-start);
+            color: var(--text-light);
+            border-color: var(--primary-start);
+            margin-top: 1rem;
+        }
+
+        .join-btn:hover {
+            background-color: var(--primary-end);
+            border-color: var(--primary-end);
+            color: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+        }
+
+        .support-text {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .support-text a {
+            color: var(--primary-start);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .support-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== Contact Section ========== */
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .email-link {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .email-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-start);
+            transition: width 0.3s ease;
+        }
+
+        .email-link:hover::after {
+            width: 100%;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--background-light);
+            border: 1px solid var(--border-light);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-start);
+            color: var(--text-light);
+            transform: translateY(-3px);
+            border-color: var(--primary-start);
+        }
+
+        /* ========== Footer ========== */
+        #main-footer {
+            background-color: #0d1b2a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-light);
+            text-decoration: underline;
+        }
+
+        /* ========== Animations ========== */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero-content h1.fade-in { animation-delay: 0.2s; }
+        .hero-content p.fade-in { animation-delay: 0.4s; }
+        .hero-content .cta-wrapper.fade-in { animation-delay: 0.6s; }
+        .hero-image.fade-in { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            from { transform: scale(0.9); opacity: 0.1; }
+            to { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        /* ========== Responsive Design ========== */
+        @media (max-width: 992px) {
+            .hero-container {
+                justify-content: center;
+            }
+            .hero-image {
+                display: none;
+            }
+            .hero-content {
+                text-align: center;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .cta-wrapper {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+                color: var(--text-dark);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid, .how-it-works-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .cta-group {
+                align-items: center;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .waitlist-form input[type="email"] {
+                max-width: 100%;
+            }
+
+            .button-pair {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav class="container">
+            <a href="#" class="logo">
+                <img src="./WhatsApp Image 2025-09-19 at 17.34.00.jpeg" alt="OnFoni Logo">
+                <span>OnFoni</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#join">Join</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Open navigation menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-container container">
+                <div class="hero-content">
+                    <h1 class="fade-in">Expertise. Just a Tap Away.</h1>
+                    <p class="fade-in">Get instant advice from verified professionals or grow your earnings as a consultant — all on one platform.</p>
+                    <div class="cta-wrapper fade-in">
+                        <div class="cta-group">
+                            <span class="cta-group-label">Consultant App</span>
+                            <div class="button-pair">
+                                <a href="https://play.google.com/store/apps/details?id=com.ollida.onfoniconsultants" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 22V2l18 10L3 22z"></path></svg>
+                                    Android
+                                </a>
+                                <a href="#" class="btn btn-secondary btn-disabled">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.2,5.4C14.6,4,16.2,3,18.4,3c0.7,0,1.3,0.1,2,0.3c-0.1,0-0.2,0-0.3,0c-2.4,0-4.3,1.3-5.4,3.1 C13.6,5.8,13.4,5.6,13.2,5.4z M11.1,5.6C9.6,4.1,7.9,3,5.8,3C3.4,3,1.4,4.5,1.4,7.2c0,1.7,0.9,3.3,2.1,4.3c0.9,0.7,2,1.3,3.3,1.3 c2.1,0,3.5-1.3,4.9-1.3c1.3,0,2.5,1.2,4.3,1.2c2,0,3.3-1.3,3.3-3.1c0-2.3-2.1-3.6-4-3.6c-1.8,0-3.2,1.2-4.5,1.2 C9.4,7.4,10.2,6.4,11.1,5.6z"></path></svg>
+                                    iOS
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cta-group">
+                            <span class="cta-group-label">User App (Coming Soon)</span>
+                            <div class="button-pair">
+                                <a href="#" class="btn btn-secondary btn-disabled">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 22V2l18 10L3 22z"></path></svg>
+                                    Android
+                                </a>
+                                <a href="#" class="btn btn-secondary btn-disabled">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.2,5.4C14.6,4,16.2,3,18.4,3c0.7,0,1.3,0.1,2,0.3c-0.1,0-0.2,0-0.3,0c-2.4,0-4.3,1.3-5.4,3.1 C13.6,5.8,13.4,5.6,13.2,5.4z M11.1,5.6C9.6,4.1,7.9,3,5.8,3C3.4,3,1.4,4.5,1.4,7.2c0,1.7,0.9,3.3,2.1,4.3c0.9,0.7,2,1.3,3.3,1.3 c2.1,0,3.5-1.3,4.9-1.3c1.3,0,2.5,1.2,4.3,1.2c2,0,3.3-1.3,3.3-3.1c0-2.3-2.1-3.6-4-3.6c-1.8,0-3.2,1.2-4.5,1.2 C9.4,7.4,10.2,6.4,11.1,5.6z"></path></svg>
+                                    iOS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image fade-in">
+                    <div class="mobile-mockup">
+                        <div class="screen">
+                            <div class="chat-bubble consultant">Of course! I'm an expert in that field. Let's connect.</div>
+                            <div class="chat-bubble user">Hey, I need help with my business plan.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container text-center">
+                <h2 class="section-title">About OnFoni</h2>
+                <p class="section-subtitle">
+                    OnFoni, by Ollida Technology, is an AI-driven consultancy marketplace that connects professionals and users through secure OTP login, real-time chat, and voice consultations. Our goal is to make expertise accessible and rewarding.
+                </p>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">Everything You Need, All in One Place</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>For Users</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                <span>Instant chat or call with verified experts</span>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12v4"></path><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"></path><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1-.9-2-2-2z"></path></svg>
+                                <span>Transparent pricing and wallet-based payments</span>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path><path d="m15.09 12.33.02 0a2.5 2.5 0 0 0-2.18-4.33 2.5 2.5 0 0 0-4.33 2.18 2.5 2.5 0 0 0 2.18 4.33l-.02 0a2.5 2.5 0 0 0 4.33-2.18Z"></path><path d="M8 16s1.5-2 4-2 4 2 4 2"></path></svg>
+                                <span>AI recommendations <span class="coming-soon">(coming soon)</span></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>For Consultants</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                <span>Earn by sharing expertise</span>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                                <span>Manage clients and payments easily</span>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                                <span>AI-powered visibility boost</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Simple Steps to Get Started</h2>
+                <div class="how-it-works-grid">
+                    <div class="step-card">
+                        <div class="step-icon">1</div>
+                        <h3>Sign Up Securely</h3>
+                        <p>Register in seconds using your mobile number with our secure, one-time password (OTP) login.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">2</div>
+                        <h3>Find & Connect</h3>
+                        <p>Instantly connect with the right expert or client through real-time chat and high-quality audio calls.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">3</div>
+                        <h3>Pay or Earn</h3>
+                        <p>Handle all transactions securely through the integrated in-app wallet, powered by PayU for reliability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join" class="section cta-section">
+            <div class="container text-center">
+                <h2 class="section-title">User App Coming Soon!</h2>
+                <p class="section-subtitle">Discover professionals across life coaching, business strategy, and personal growth. Join our waitlist to get notified when we launch.</p>
+                <form class="waitlist-form">
+                    <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+                    <button type="submit" class="btn btn-primary">Join Waitlist</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">What Our Consultants Say</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3l-2 4zm8 0h3l2-4V7h-6v6h3l-2 4z"/></svg>
+                        <p class="quote-text">"Onboarding as a consultant was super quick! The platform is intuitive and I was ready to start earning in just a few minutes."</p>
+                        <p class="quote-author">- Business Consultant</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3l-2 4zm8 0h3l2-4V7h-6v6h3l-2 4z"/></svg>
+                        <p class="quote-text">"Finally, an easy way to offer advice online and earn fairly. The integrated wallet makes payments seamless and reliable."</p>
+                        <p class="quote-author">- Life Coach</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join-consultant" class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Are you an expert or consultant?</h2>
+                <p class="section-subtitle">Join the OnFoni network and start earning by offering your advice.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.ollida.onfoniconsultants" class="btn btn-primary join-btn" target="_blank" rel="noopener noreferrer">Download OnFoni Consultant App</a>
+                <p class="support-text">For support, reach us at <a href="mailto:support@onfoni.com">support@onfoni.com</a>.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">Have questions or feedback? We'd love to hear from you.</p>
+                <div class="contact-info">
+                    <a href="mailto:support@onfoni.com" class="email-link">support@onfoni.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg>
+                    </a>
+                    <a href="#" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.21-6.815-6.041 6.815h-3.308l7.748-8.726-8.23-10.774h6.828l4.611 6.033 5.545-6.033zm-1.182 18.259h1.844l-10.4-13.845h-1.956l10.512 13.845z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer">
+        <div class="container footer-container">
+            <p class="copyright">&copy; 2025 Ollida Technology Pvt. Ltd.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Account Deletion</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
