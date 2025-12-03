@@ -266,6 +266,34 @@ nav {
     justify-content: center;
 }
 
+.subscribe-success {
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.subscribe-success.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.subscribe-error {
+    margin-top: 0.5rem;
+    color: #ffd7d7;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.subscribe-error.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .cta-group-label {
     font-size: 0.9rem;
     font-weight: 600;
@@ -333,6 +361,13 @@ nav {
     color: rgba(255, 255, 255, 0.6);
     cursor: not-allowed;
     pointer-events: none;
+}
+
+.btn-success {
+    background-color: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: var(--text-light);
+    box-shadow: 0 10px 30px rgba(24, 119, 242, 0.18);
 }
 
 .hero-image {
